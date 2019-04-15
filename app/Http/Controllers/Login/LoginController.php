@@ -15,14 +15,15 @@ class LoginController extends Controller
     {
         return view('login.login');
     }
+
     /*
      * 登录方法*/
     public function login(Request $request)
     {
-        $user = ['id' => 1 ,'username' => 'tiangou' , 'password' => 123456];
+        $user = ['id' => 1, 'username' => 'tiangou', 'password' => 123456];
         $data = $request->post('data');
         //dump($request->post());
-        if ($data['username'] == $user['username'] && $data['pwd'] == $user['password']){
+        if ($data['username'] == $user['username'] && $data['pwd'] == $user['password']) {
 //            return redirect('article.article');
 //             return view('article.article');
 //            redirect('article.article');
@@ -33,7 +34,7 @@ class LoginController extends Controller
             return json_encode($code);
 //            return redirect('article/article');
 //            redirect()->action('ArticleController@index');
-        }else{
+        } else {
             $code = [
                 'code' => 100,
                 'msg' => '账号密码错误'

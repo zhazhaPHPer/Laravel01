@@ -12,15 +12,20 @@
 */
 
 //Controllers根目录下
-Route::get('index','IndexController@index')->name('index');
+Route::get('index', 'IndexController@index')->name('index');
 //需要控制器命名空间
-Route::group(['namespace' => 'Index'],function(){
-Route::any('index','HomeController@index')->name('home');
-Route::any('cate','HomeController@cate')->name('cate');
+Route::group(['namespace' => 'Index'], function () {
+    Route::any('index', 'HomeController@index')->name('home');
+    Route::any('cate', 'HomeController@cate')->name('cate');
 
 });
-Route::get('login/index','Login\LoginController@index');
-Route::post('login/login','Login\LoginController@login');
+//第一天作业
+Route::group(['namespace' => 'Login'],function (){
+    Route::get('login/index', 'LoginController@index')->name('login/index');
+    Route::post('login/login', 'LoginController@login')->name('login/login');
+});
 
-Route::get('article/article','Article\ArticleController@index');
-Route::get('article/list','Article\ArticleController@list');
+Route::group(['namespace' => 'Article'],function(){
+    Route::get('article/article', 'ArticleController@index')->name('article/article');
+    Route::get('article/list', 'ArticleController@list')->name('article/list');
+});
